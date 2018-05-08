@@ -17,6 +17,39 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
 
+function steps(n) {
+    drawStep(n, n);
+}
+
+function drawStep(currentRow, maxRow){
+    var stepString = "";
+    if (currentRow > 0){
+        for (var i = 0; i < maxRow; i++){
+            if (i < currentRow) {
+                stepString += "#";
+            } else {
+                stepString += " ";
+            }
+        }
+        drawStep(currentRow-1, maxRow);
+        console.log(stepString);
+    }
+}
+
+/*
+function steps(n) {
+    for(var i = 1; i <= n; i++){
+        var row = "";
+        for(var j = 1; j <= n; j++){
+            if (j <= i){
+                row += "#";
+            } else {
+                row += " ";
+            }
+        }
+        console.log(row);
+    }
+}
+*/
 module.exports = steps;
