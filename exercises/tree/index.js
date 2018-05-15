@@ -34,25 +34,31 @@ class Tree {
 
     traverseBF(func){
 
-        let traverseArray = [];
+        let traverseArray = [this.root];
 
-        traverseArray.push(this.root);
-
-        while(traverseArray.length > 0){
-            console.log("Traverse Array Before: " + traverseArray);
-
+        while(traverseArray.length){
             let currentNode = traverseArray.shift()
-            traverseArray.forEach(function(){
-                traverseArray.push(currentNode.children)
+            currentNode.children.forEach(function(element){
+                traverseArray.push(element)
             })
-            console.log("Traverse Array After: " + traverseArray);
             func(currentNode);
         }
     }
 
     traverseDF(func){
-        let traverseArray = [];
+        let traverseArray = [this.root];
 
+        while(traverseArray.length > 0){
+            let currentNode = traverseArray.shift();
+            console.log("currentNode: " + currentNode.data);
+            if (currentNode.children.length > 0){
+                traverseArray = currentNode.children.concat(traverseArray);
+                traverseArray.forEach((element) => {
+                    console.log("element: " + element.data);
+                });
+            } 
+            func(currentNode);
+        }
     }
 }
 
