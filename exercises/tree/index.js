@@ -48,17 +48,11 @@ class Tree {
     traverseDF(func){
         let traverseArray = [this.root];
 
-        while(traverseArray.length > 0){
+        while(traverseArray.length){
             let currentNode = traverseArray.shift();
-            console.log("currentNode: " + currentNode.data);
-            if (currentNode.children.length > 0){
-                traverseArray = currentNode.children.concat(traverseArray);
-                traverseArray.forEach((element) => {
-                    console.log("element: " + element.data);
-                });
-            } 
+            traverseArray = currentNode.children.concat(traverseArray);
             func(currentNode);
-        }
+        }    
     }
 }
 
